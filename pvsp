@@ -1,0 +1,72 @@
+package tictactoeConseole;
+import tools.MyScanner;
+import newtictactoe.Player;
+import newtictactoe.Tictac;
+
+public class TictactoeConsole {
+	
+	public static void main(String[] args) {
+		MyScanner ms = new MyScanner();	
+		String turn,symbol;
+		String winner = null;
+	String[]	board = new String[9];
+	String name1,name2;
+  int counter2=1;
+
+String counter1;
+  int numEntered;
+  
+  name1= ms.readString("Enter name of player 1:");
+  Player p1=new Player(name1,"X");
+  name2 = ms.readString("Enter name of player 2:");
+  Player p2=new Player(name2,"O");
+  for (int a=0;a<9;a++)
+	{counter1=String.valueOf(counter2);
+	 board[a]=counter1;
+	counter2=counter2 +1;
+	}
+	Tictac tic=new Tictac();
+	turn=p1.getName();
+	symbol=p1.getSymbol();
+	
+	while(winner==null)
+	{ 
+		printBoard(board);
+		
+		numEntered= ms.readInt("Enter the position for player :"+ turn);
+		 
+		board=tic.newBoard(board, numEntered,symbol);
+		
+	
+	winner=tic.convertor( p1, p2, board)   ;
+		
+	    turn= tic.changeTurn(turn,p1,p2);
+       symbol=tic.changeSymbol(symbol,p1,p2);}	
+	
+	}	
+	
+	
+	
+	
+	
+	public static void printBoard(String[] board)
+	{
+		System.out.println("|---|---|---|");
+		System.out.println("| " + board[0] + " | "
+						+ board[1] + " | " + board[2]
+						+ " |");
+		System.out.println("|-----------|");
+		System.out.println("| " + board[3] + " | "
+						+ board[4] + " | " + board[5]
+						+ " |");
+		System.out.println("|-----------|");
+		System.out.println("| " + board[6] + " | "
+						+ board[7] + " | " + board[8]
+						+ " |");
+		System.out.println("|---|---|---|");
+	}
+					 
+				  
+			
+}
+
