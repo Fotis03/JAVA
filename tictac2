@@ -1,0 +1,415 @@
+package newtictactoe;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.util.Arrays;
+
+import javax.swing.JButton;
+public class Tictac {
+private String winCon;
+
+public String getWinCon() {
+	return winCon;
+}
+public void setWinCon(String winCon) {
+	this.winCon = winCon;
+	 
+}
+
+	
+
+
+
+
+
+	
+public 	String convertor(JButton[] buttons) {
+  String winner="n";
+		//check X win conditions
+		if(
+				(buttons[0].getText()=="X") &&
+				(buttons[1].getText()=="X") &&
+				(buttons[2].getText()=="X")
+				) {
+			winner="X";
+		}
+		if(
+				(buttons[3].getText()=="X") &&
+				(buttons[4].getText()=="X") &&
+				(buttons[5].getText()=="X")
+				) {
+			winner="X";
+		}
+		if(
+				(buttons[6].getText()=="X") &&
+				(buttons[7].getText()=="X") &&
+				(buttons[8].getText()=="X")
+				) {
+			winner="X";
+		}
+		if(
+				(buttons[0].getText()=="X") &&
+				(buttons[3].getText()=="X") &&
+				(buttons[6].getText()=="X")
+				) {
+			winner="X";
+		}
+		if(
+				(buttons[1].getText()=="X") &&
+				(buttons[4].getText()=="X") &&
+				(buttons[7].getText()=="X")
+				) {
+			winner="X";
+		}
+		if(
+				(buttons[2].getText()=="X") &&
+				(buttons[5].getText()=="X") &&
+				(buttons[8].getText()=="X")
+				) {
+			winner="X";
+		}
+		if(
+				(buttons[0].getText()=="X") &&
+				(buttons[4].getText()=="X") &&
+				(buttons[8].getText()=="X")
+				) {
+			winner="X";
+		}
+		if(
+				(buttons[2].getText()=="X") &&
+				(buttons[4].getText()=="X") &&
+				(buttons[6].getText()=="X")
+				) {
+			winner="X";
+		}
+		//check O win conditions
+		if(
+				(buttons[0].getText()=="O") &&
+				(buttons[1].getText()=="O") &&
+				(buttons[2].getText()=="O")
+				) {
+			winner="O";
+		}
+		if(
+				(buttons[3].getText()=="O") &&
+				(buttons[4].getText()=="O") &&
+				(buttons[5].getText()=="O")
+				) {
+			winner="O";
+		}
+		if(
+				(buttons[6].getText()=="O") &&
+				(buttons[7].getText()=="O") &&
+				(buttons[8].getText()=="O")
+				) {
+			winner="O";
+		}
+		if(
+				(buttons[0].getText()=="O") &&
+				(buttons[3].getText()=="O") &&
+				(buttons[6].getText()=="O")
+				) {
+			winner="O";
+		}
+		if(
+				(buttons[1].getText()=="O") &&
+				(buttons[4].getText()=="O") &&
+				(buttons[7].getText()=="O")
+				) {
+			winner="O";
+		}
+		if(
+				(buttons[2].getText()=="O") &&
+				(buttons[5].getText()=="O") &&
+				(buttons[8].getText()=="O")
+				) {
+			winner="O";
+		}
+		if(
+				(buttons[0].getText()=="O") &&
+				(buttons[4].getText()=="O") &&
+				(buttons[8].getText()=="O")
+				) {
+			winner="O";
+		}
+		if(
+				(buttons[2].getText()=="O") &&
+				(buttons[4].getText()=="O") &&
+				(buttons[6].getText()=="O")
+				) {
+			winner="O";
+		}
+	
+  
+return winner;}
+
+public 	int evaluator(JButton[] buttons) {
+	if(
+			(buttons[0].getText()=="X") &&
+			(buttons[1].getText()=="X") &&
+			(buttons[2].getText()=="X")
+			) {
+		return 1;
+	}
+	if(
+			(buttons[3].getText()=="X") &&
+			(buttons[4].getText()=="X") &&
+			(buttons[5].getText()=="X")
+			) {
+		return 1;
+	}
+	if(
+			(buttons[6].getText()=="X") &&
+			(buttons[7].getText()=="X") &&
+			(buttons[8].getText()=="X")
+			) {
+		return 1;
+	}
+	if(
+			(buttons[0].getText()=="X") &&
+			(buttons[3].getText()=="X") &&
+			(buttons[6].getText()=="X")
+			) {
+		return 1;
+	}
+	if(
+			(buttons[1].getText()=="X") &&
+			(buttons[4].getText()=="X") &&
+			(buttons[7].getText()=="X")
+			) {
+		return 1;
+	}
+	if(
+			(buttons[2].getText()=="X") &&
+			(buttons[5].getText()=="X") &&
+			(buttons[8].getText()=="X")
+			) {
+		return 1;
+	}
+	if(
+			(buttons[0].getText()=="X") &&
+			(buttons[4].getText()=="X") &&
+			(buttons[8].getText()=="X")
+			) {
+		return 1;
+	}
+	if(
+			(buttons[2].getText()=="X") &&
+			(buttons[4].getText()=="X") &&
+			(buttons[6].getText()=="X")
+			) {
+		return 1;
+	}
+	//check O win conditions
+	if(
+			(buttons[0].getText()=="O") &&
+			(buttons[1].getText()=="O") &&
+			(buttons[2].getText()=="O")
+			) {
+		return -1;
+	}
+	if(
+			(buttons[3].getText()=="O") &&
+			(buttons[4].getText()=="O") &&
+			(buttons[5].getText()=="O")
+			) {
+		return -1;
+
+	}
+	if(
+			(buttons[6].getText()=="O") &&
+			(buttons[7].getText()=="O") &&
+			(buttons[8].getText()=="O")
+			) {
+		return -1;
+
+	}
+	if(
+			(buttons[0].getText()=="O") &&
+			(buttons[3].getText()=="O") &&
+			(buttons[6].getText()=="O")
+			) {
+		return -1;
+
+	}
+	if(
+			(buttons[1].getText()=="O") &&
+			(buttons[4].getText()=="O") &&
+			(buttons[7].getText()=="O")
+			) {
+		return -1;
+
+	}
+	if(
+			(buttons[2].getText()=="O") &&
+			(buttons[5].getText()=="O") &&
+			(buttons[8].getText()=="O")
+			) {
+		return -1;
+
+	}
+	if(
+			(buttons[0].getText()=="O") &&
+			(buttons[4].getText()=="O") &&
+			(buttons[8].getText()=="O")
+			) {
+		return -1;
+
+	}
+	if(
+			(buttons[2].getText()=="O") &&
+			(buttons[4].getText()=="O") &&
+			(buttons[6].getText()=="O")
+			) {
+		return -1;
+
+	}
+
+
+
+	    // Else if none of them have won then return 0
+	    return 0;
+	}			
+
+
+
+
+	
+
+
+
+
+public int randomNumGen() {
+int number = (int) ((Math.random() * (8 - 0)) + 0);
+return number;}
+
+public Boolean movesLeft(JButton[] board)
+{boolean help=true;
+for (int a = 0; a < 9; a++) {
+	if (Arrays.asList(board.toString()).contains(String.valueOf(a ))) {
+		help=true;
+		break;
+	}
+	else {
+		help=false;
+	}
+}
+return help; } 
+
+
+
+public int findBestMove(JButton board[]){
+    int bestVal = Integer.MIN_VALUE;
+    int bestMove=-1;
+   
+ 
+    // Traverse all cells, evaluate minimax function
+    // for all empty cells. And return the cell
+    // with optimal value.
+    for (int i = 0; i < 9; i++)
+    {
+     
+            // Check if cell is empty
+    	if ((!board[i].getText().equals("X"))&&(!board[i].getText().equals("O")))
+            {
+                // Make the move
+                board[i].setText("O");
+ 
+                // compute evaluation function for this
+                // move.
+                int moveVal = miniMax(board, 0,true);
+ 
+                // Undo the move
+         
+                board[i].setText("") ;
+ 
+                // If the value of the current move is
+                // more than the best value, then update
+                // best/
+                if (moveVal > bestVal)
+                {bestVal = moveVal;
+                    bestMove = i;
+       
+                    
+                }
+            }
+        }
+    
+ 
+ 
+ 
+ 
+    return bestMove;
+
+}
+public int miniMax(JButton board[],int depth, Boolean isMax) {
+	int best;
+	isMax=true;
+	int score;
+score= evaluator(board);
+ 
+if (score == 1)
+    return score;
+
+if (score == -1)
+    return score;
+
+if (movesLeft(board)==false)
+return 0;
+
+if (isMax)
+{
+    best = Integer.MIN_VALUE;
+
+  
+    for (int i = 0; i < 9; i++)
+    {
+        
+      
+            if ((!board[i].getText().equals("X"))&&(!board[i].getText().equals("O")))
+            {
+                
+                board[i].setText("O");
+
+              int score2=miniMax(board, depth + 1, true);
+              best = Math.max( score2,best);
+
+            
+              board[i].setText("");  
+            }
+        }
+    
+    return best;
+}
+else
+{
+     best = Integer.MAX_VALUE;
+
+    // Traverse all cells
+    for (int i = 0; i < 9; i++)
+    {
+        
+        if ((!board[i].getText().equals("X"))&&(!board[i].getText().equals("O")))
+        {
+            
+            board[i].setText("X");
+
+               
+            int score2=    miniMax(board,depth + 1,false);
+            best = Math.min(score2, best);
+
+                
+               
+                board[i].setText("");
+            }
+             
+        }
+
+    return best; 
+ }
+}
+  
+}
+
+
