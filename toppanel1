@@ -1,0 +1,81 @@
+package view;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.nio.channels.GatheringByteChannel;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+
+import control.GameController;
+
+public class TopPanel extends GamePanel{	
+	JButton quitBtn;
+	JButton startGameBtn;
+	JButton doneBtn;
+	JLabel winnertext;
+	JButton newPlayer;
+	JButton pvsHall;
+	JButton pvsBean;
+	public TopPanel (GameController gc) {
+		super(gc);
+		this.setLayout(new FlowLayout(FlowLayout.CENTER));
+		this.setPreferredSize(new Dimension(MainWindow.WIDTH,MainWindow.TOP_HEIGHT));
+		this.setBorder(new LineBorder(Color.GRAY,1,true));
+		quitBtn = new JButton("Quit App");	
+		quitBtn.setPreferredSize(new Dimension(100, 40));
+		quitBtn.addActionListener((e)->{this.gc.quit();});		
+		
+		startGameBtn = new JButton("Start Game");
+		startGameBtn.setPreferredSize(new Dimension(100, 40));
+		startGameBtn.setEnabled(false);
+		startGameBtn.addActionListener((e)->{this.gc.startGame();});
+		
+		newPlayer = new JButton("Add new player");		
+		newPlayer.setPreferredSize(new Dimension(150, 40));		
+	//	newPlayer.addActionListener((a)->{this.gc.selectTypeOfPlayer(e);});
+		
+		pvsBean = new JButton("Player vs Bean");		
+		pvsBean.setPreferredSize(new Dimension(150, 40));		
+		pvsBean.addActionListener((e)->{gc.pvsBean();});
+		
+		pvsHall = new JButton("Player VS Hall");		
+		pvsHall.setPreferredSize(new Dimension(150, 40));		
+		pvsHall.addActionListener((e)->{gc.pvsBean();});
+		
+		add(startGameBtn);
+		add(newPlayer);
+					
+	   add(pvsBean);
+	    add(pvsHall);
+		add(quitBtn);	
+	}
+	
+
+	
+
+	
+
+	public JButton getQuitBtn() {
+		return quitBtn;
+	}
+
+	public JButton getStartBtn() {
+		return startGameBtn;
+	}
+	
+
+	public JButton getDoneBtn() {
+		return doneBtn;
+	}	
+
+
+
+	
+}
