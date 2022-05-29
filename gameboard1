@@ -1,0 +1,234 @@
+package view;
+import control.GameController;
+import java.text.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import javax.swing.*;
+
+import newtictactoe.Tictac;
+import view.MainWindow;
+import view.TopPanel;
+public class GameBoard  extends GamePanel implements ActionListener{
+	TopPanel tp=new TopPanel(gc);
+	private JButton[] buttons = new JButton[9];
+    Tictac tic=new Tictac();
+	int row	;
+	public boolean highlighted,player1_turn=true;
+	public static final int CELL_PADDING = 10;
+	public GameBoard(GameController gc) {
+       
+		super(gc);	
+		jbuttonsSize();
+		this.setLayout(null);
+		setSize(new Dimension(MainWindow.WIDTH-2*MainWindow.PLAYER_WIDTH, MainWindow.HEIGHT-MainWindow.TOP_HEIGHT));		
+		this.setLayout(new GridLayout(3,3));
+		this.setBackground(new Color(150,150,150));
+	
+	for(int i=0;i<9;i++) {
+		getButtons()[i] = new JButton();
+		this.add(getButtons()[i]);
+		getButtons()[i].setFont(new Font("MV Boli",Font.BOLD,120));
+		getButtons()[i].setFocusable(true);
+		getButtons()[i].addActionListener(this);}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String winner;
+		for(int i=0;i<9;i++) {
+			if(e.getSource()==getButtons()[i]) {
+				if(player1_turn) {
+					if(getButtons()[i].getText()=="") {
+						getButtons()[i].setForeground(new Color(255,0,0));
+						getButtons()[i].setText("X");
+						player1_turn=false;
+			
+					}
+				}
+				else {
+					if(getButtons()[i].getText()=="") {
+						getButtons()[i].setForeground(new Color(0,0,255));
+						getButtons()[i].setText("O");
+						player1_turn=true;
+					}
+					
+				}
+			
+			
+			}			
+		}		
+		winner=tic.convertor(getButtons());
+		if (winner.equals("X")) {
+			JOptionPane.showMessageDialog(gc.getView(), 						
+					"THE WINNER IS:"+gc.getModel().getGamePlayers()[0]	,
+					"THE GAME IS OVER"	,
+					JOptionPane.PLAIN_MESSAGE);}
+		else
+		if (winner.equals("O")) {
+			JOptionPane.showMessageDialog(gc.getView(), 						
+					"THE WINNER IS:"+gc.getModel().getGamePlayers()[1],
+					"THE GAME IS OVER",
+					JOptionPane.PLAIN_MESSAGE);	
+	            	}
+	}
+     
+	public void actionPerformed2(ActionEvent e) {
+		String winner;
+		for(int i=0;i<9;i++) {
+			if(e.getSource()==getButtons()[i]) {
+				if(player1_turn) {
+					if(getButtons()[i].getText()=="") {
+						getButtons()[i].setForeground(new Color(255,0,0));
+						getButtons()[i].setText("X");
+						player1_turn=false;
+			
+					}
+				}
+			}				
+			   else {int j=tic.randomNumGen();
+					 if	(player1_turn==false)
+					 {
+			         if(getButtons()[j].getText()=="") {
+						getButtons()[j].setForeground(new Color(0,0,255));
+						getButtons()[j].setText("O");
+						player1_turn=true;
+					}
+					 }
+				
+					
+			}			
+		}		
+		
+		
+		
+		
+		winner=tic.convertor(getButtons());
+		if (winner.equals("X")) {
+			JOptionPane.showMessageDialog(gc.getView(), 						
+					"THE WINNER IS:"+gc.getModel().getGamePlayers()[0]	,
+					"THE GAME IS OVER"	,
+					JOptionPane.PLAIN_MESSAGE);}
+		else
+		if (winner.equals("O")) {
+			JOptionPane.showMessageDialog(gc.getView(), 						
+					"THE WINNER IS:"+gc.getModel().getGamePlayers()[1],
+					"THE GAME IS OVER",
+					JOptionPane.PLAIN_MESSAGE);	
+	            	}
+		}
+	
+	 public void actionPerformed3(ActionEvent e) {
+		 
+		 String winner;
+			for(int i=0;i<9;i++) {
+				if(e.getSource()==getButtons()[i]) {
+					if(player1_turn) {
+						if(getButtons()[i].getText()=="") {
+							getButtons()[i].setForeground(new Color(255,0,0));
+							getButtons()[i].setText("X");
+							player1_turn=false;
+				
+						}
+					}
+				}				
+				   else {int j=tic.findBestMove(getButtons());
+						 if	(player1_turn==false)
+						 {
+
+							getButtons()[j].setForeground(new Color(0,0,255));
+							getButtons()[j].setText("O");
+							player1_turn=true;
+						}
+						 }
+					
+						
+				}			
+			
+			
+			
+			winner=tic.convertor(getButtons());
+			if (winner.equals("X")) {
+				JOptionPane.showMessageDialog(gc.getView(), 						
+						"THE WINNER IS:"+gc.getModel().getGamePlayers()[0]	,
+						"THE GAME IS OVER"	,
+						JOptionPane.PLAIN_MESSAGE);}
+			else
+			if (winner.equals("O")) {
+				JOptionPane.showMessageDialog(gc.getView(), 						
+						"THE WINNER IS:"+gc.getModel().getGamePlayers()[1],
+						"THE GAME IS OVER",
+						JOptionPane.PLAIN_MESSAGE);	
+		            	}
+		 
+		 
+	 }
+	private int jbuttonsSize() {
+		int minDim = Integer.min(this.getWidth(),this.getHeight());
+		return minDim/5;
+	}
+	
+	private int boardSize() {
+		return 3*jbuttonsSize();
+	}
+	
+	private Point boardZero() {
+		int x= (this.getWidth() - boardSize())/2;
+		int y= (this.getHeight() - boardSize())/2;
+		return new Point(x,y);
+	}
+
+	
+	
+	public void drawGrid(Graphics g) {
+		Graphics2D g2d = (Graphics2D)g;
+		g2d.setStroke(new BasicStroke(6));
+		for (int i=1; i<3; i++) {
+			//Draw Vertical Line
+			g2d.drawLine(
+					boardZero().x +i*jbuttonsSize(),boardZero().y, 				// i-based x,  	upperLeft.y 
+					boardZero().x+i*jbuttonsSize(),boardZero().y+boardSize() 	// i-based x,	boardBottom.y (boardBottom = y + boardSize)
+					);
+			
+			//Draw Horizontal Line
+			g2d.drawLine(
+					boardZero().x,  boardZero().y+i*jbuttonsSize(), 			// upperLeft.x, i-based y
+					boardZero().x+boardSize(), boardZero().y+i*jbuttonsSize()	// boardRight.x, i-based y (boardRight = x + boardSize)
+					);}
+		}
+
+		
+		
+	
+
+
+	
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		//this.setBorder(new LineBorder(Color.DARK_GRAY, 1));
+		String mark = getModel().getBoardMark(this.row);
+		Graphics2D g2d = (Graphics2D) g;
+		int size = this.getSize().width - 2 * CELL_PADDING;
+		g2d.setStroke(new BasicStroke(6));
+		if (mark == null) {
+			if (highlighted) {
+				g2d.setColor(Color.black);
+				g2d.fillRect(CELL_PADDING, CELL_PADDING, size, size);
+			}
+			return;
+		} else if (mark.equals("X")) {
+			g2d.drawLine(CELL_PADDING, CELL_PADDING, CELL_PADDING + size, CELL_PADDING + size);
+			g2d.drawLine(CELL_PADDING + size, CELL_PADDING, CELL_PADDING, CELL_PADDING + size);
+		} else {
+			g2d.drawOval(CELL_PADDING, CELL_PADDING, size, size);
+		}
+	}
+
+	public JButton[] getButtons() {
+		return buttons;
+	}
+
+	public void setButtons(JButton[] buttons) {
+		this.buttons = buttons;
+	}
+	}
