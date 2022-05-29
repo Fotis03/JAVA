@@ -1,0 +1,11 @@
+public String getPlayerStats(Player player) {
+		StringBuilder sb = new StringBuilder("");
+		sb.append(player.getName()).append("\n\n\n");
+		sb.append("Total:").append("\t").append(player.getTotalGames()).append("\n");
+		sb.append("Won:").append("\t").append(player.getWins()).append("\n");
+		sb.append("Lost:").append("\t").append(player.getLoses()).append("\n");
+		sb.append("Draws:").append("\t").append(player.getDraws()).append("\n");
+		sb.append("Score:").append("\t").append(player.getScore()).append("\n");
+		
+		return sb.toString();			
+	}
