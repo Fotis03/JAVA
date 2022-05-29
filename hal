@@ -1,0 +1,84 @@
+package view;
+
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Insets;
+import java.util.Arrays;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import control.GameController;
+import model.Player;
+
+public class HallOfFame extends GamePanel{
+	JTextField nmClass;
+	JTextArea hof;
+	
+	public HallOfFame(GameController gc) {
+		super(gc);	
+		nmClass = new JTextField("HALL OF FAME");
+		nmClass.setPreferredSize(new Dimension(MainWindow.WIDTH-2*MainWindow.PLAYER_WIDTH,155));
+		nmClass.setAlignmentX(CENTER_ALIGNMENT);
+		nmClass.setHorizontalAlignment(JTextField.CENTER);
+		nmClass.setEnabled(false);
+		Font markf = new Font("SansSerif", Font.BOLD,40);
+		nmClass.setFont(markf);
+		
+		hof = new JTextArea(10,100);		
+		hof.setPreferredSize(new Dimension(MainWindow.WIDTH-2*MainWindow.PLAYER_WIDTH,550));
+		hof.setAlignmentX(CENTER_ALIGNMENT);
+		Font statsf = new Font("SansSerif", Font.BOLD,20);
+		hof.setFont(statsf);
+		hof.setEnabled(false);		
+		hof.setMargin(new Insets(10, 10, 10, 10));
+		
+		this.add(nmClass);
+		this.add(hof);
+	}
+		
+}  
+	/* StringBuilder text = new StringBuilder();
+	
+	 
+	 Player[] allplayers=gc.getModel().getPlayer();
+		Player[] players=new Player[gc.getModel().getNumOfPlayers()];
+		int i=0;
+		for(i=0;i<gc.getModel().getNumOfPlayers();i++)
+		{
+			players[i]=allplayers[i];
+			
+				
+			
+			
+			
+			
+		}
+		if(players!=null)
+		{
+			Arrays.sort(players);
+		}		
+	for(int j=0;j<10;j++)
+	{
+		
+		{
+			text.append("\t\t\t").append(allplayers[j].getName()).append("\t\t\t").append(allplayers[j].getScore()).append("\n\n\n");
+					
+		}
+	}
+	
+
+    this.add(nmClass);
+	
+	}
+	public JTextArea getHof() {
+		return hof;
+	}
+	public void setHof(JTextArea hof) {
+		this.hof = hof;
+	}
+	
+}*/
