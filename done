@@ -1,0 +1,3 @@
+doneBtn = new JButton("done");	
+		doneBtn.setPreferredSize(new Dimension(100, 40));
+		doneBtn.addActionListener((e)->{this.gc.restart();});
