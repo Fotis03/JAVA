@@ -1,0 +1,10 @@
+public void restart() {
+		this.getView().getMainPanel().removeGameBoard();
+		this.getView().getLeftPanel().getSelectPlayerBtn().setEnabled(true);
+		this.getView().getRightPanel().getSelectPlayerBtn().setEnabled(true);
+		this.getView().getMainPanel().getHallOfFame().setVisible(true);
+		
+		this.getView().getTopPanel().getStartBtn().setEnabled(true);
+		this.getView().getLeftPanel().setPlayerStats(this.model.getPlayerStats(this.model.getGamePlayers()[0]));
+		this.getView().getRightPanel().setPlayerStats(this.model.getPlayerStats(this.model.getGamePlayers()[1]));
+	}
